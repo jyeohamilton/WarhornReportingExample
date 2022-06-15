@@ -1,0 +1,35 @@
+﻿query EventCalendar ($eventSlug: String!, $start: ISO8601DateTime, $end: ISO8601DateTime) {
+  eventSessions(
+    events: [ $eventSlug]
+    startsAfter: $start
+    startsBefore: $end
+  ) {
+    nodes {
+      status
+      startsAt
+      endsAt
+      scenario {
+        name
+        campaign {
+          name
+        }
+      }
+      slot {
+        venue {
+          name
+        }
+      }
+      uuid
+      playerSignups {
+        user {
+          id
+        }
+      }
+      gmSignups {
+        user {
+          id
+        }
+      }
+    }
+  }
+}
